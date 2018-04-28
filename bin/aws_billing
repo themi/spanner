@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.dirname(__FILE__) + "/..")
+$LOAD_PATH.unshift(File.dirname(__FILE__) + "/../lib")
+
+require 'dotenv/load'
+require 'bundler/setup'
+
+require 'aws-sdk'
+require "thor"
+
+require "aws_billing/console"
+
+AwsBilling::Console.start(ARGV)
