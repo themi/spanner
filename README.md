@@ -51,7 +51,13 @@ aws_secret_access_key=blah
 * install the ruby app `spanner`
 
 ```
-git clone ...
+git clone git@github.com:themi/spanner.git
+cd spanner
+
+# configure ruby manager for 2.5.1@spanner
+
+gem install bundler
+bundle
 ```
 
 * review/update the settings in file `./initializers/aws_billing.rb`
