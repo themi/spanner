@@ -36,7 +36,7 @@
 
 * Create User (programmatic access access only) `organisations-account-admin-user`, attach the above policy and record the aws_access_key_id and aws_secret_access_key.
 
-* Create file `~/aws/credentials` and add the following:
+* Create file `~/.aws/credentials` and add the following:
 
 ```
 [organisation-admin]
