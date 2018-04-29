@@ -5,7 +5,7 @@ module AwsUtils
       initialize_client(Aws::Organizations::Client, options)
     end
 
-    def create_account(account_name, account_email)
+    def create(account_name, account_email)
       @response = client.create_account({
         email: account_email, 
         account_name: account_name, 
@@ -26,7 +26,7 @@ module AwsUtils
       puts ""
     end
 
-    def list_accounts
+    def list_all
       accounts = []
       @response = client.list_accounts
       list_populate(accounts)

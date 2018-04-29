@@ -1,4 +1,4 @@
-# Billing root AWS Account
+# Billing root (Organisations) AWS Account
 
 ## Setup 
 
@@ -60,10 +60,10 @@ gem install bundler
 bundle
 ```
 
-* review/update the settings in file `./initializers/aws_billing.rb`
+* review/update the settings in file `./initializers/aws_accounts.rb`
 
 ```
-AwsBilling.configure do |c|
+AwsAccounts.configure do |c|
   c.admin_profile         = "organisation-admin"
   c.account_admin_profile = "account-admin"
   c.account_access_role   = "OrganizationAccountAccessRole"
@@ -77,7 +77,7 @@ end
 
 ## How to use
 
-There is only one feature currently: `./bin/aws_billling`.  It uses `thor` so just run it to get some help. 
+There is only one feature currently: `./bin/aws_accounts`.  It uses `thor` so just run it to get some help. 
 
 
 #### To create a new AWS Account as a member
@@ -85,7 +85,7 @@ There is only one feature currently: `./bin/aws_billling`.  It uses `thor` so ju
 * create the account
 
 ```
-aws_billing create_account "First National Bank"
+aws_accounts create "First National Bank"
 ```
 
 Take note of the ACCOUNT_ID then...
@@ -95,7 +95,7 @@ Take note of the ACCOUNT_ID then...
 
 
 ```
-aws_billing setup_account ACCOUNT_ID
+aws_accounts setup_onbording_user ACCOUNT_ID
 ```
 
 topsekr.it the output to Onboarding I/C 

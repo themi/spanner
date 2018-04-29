@@ -1,6 +1,6 @@
 require 'ostruct'
  
-module AwsBilling
+module AwsAccounts
  
   class Config < OpenStruct
   end

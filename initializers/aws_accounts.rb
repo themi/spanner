@@ -1,4 +1,4 @@
-AwsBilling.configure do |c|
+AwsAccounts.configure do |c|
   c.admin_profile         = "organisation-admin"
   c.account_admin_profile = "account-admin"
   c.account_access_role   = "OrganizationAccountAccessRole"
