@@ -3,12 +3,13 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + "/..")
 $LOAD_PATH.unshift(File.dirname(__FILE__) + "/../lib")
 
-require 'dotenv/load'
-require 'bundler/setup'
+require "dotenv/load"
+require "bundler/setup"
 
-require 'aws-sdk'
+require "aws-sdk"
 require "thor"
 
-require "aws_billing/console"
+require "aws_billing"
 
 AwsBilling::Console.start(ARGV)
+

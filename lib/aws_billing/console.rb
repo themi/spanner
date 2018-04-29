@@ -1,7 +1,3 @@
-require "aws_utils"
-require "aws_billing/config"
-require "initializers/aws_billing"
-
 module AwsBilling
   class Console < Thor
     include Thor::Actions
