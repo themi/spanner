@@ -70,7 +70,7 @@ AwsBilling.configure do |c|
   c.email_template        = "support+%{ACCOUNT_NAME}@reinteractive.net"
   c.account_name_template = "OpsCare %{ACCOUNT_NAME}"
   c.sts_external_id       = "reinteractive-OpsCare"
-  c.onboarding_user       = "tim@reinteractive.net"
+  c.onboarding_ic         = "tim@reinteractive.net"
 end
 ```
 

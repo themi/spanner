@@ -32,7 +32,7 @@ module AwsBilling
       role_creds = sts.credentials_for(account_id, AwsBilling.config.account_access_role, AwsBilling.config.sts_external_id)
       iam = AwsUtils::Iam.new(credentials: role_creds)
 
-      output = iam.add_opscare_user(AwsBilling.config.onboarding_user, account_id)
+      output = iam.add_onbording_ic(AwsBilling.config.onboarding_ic, account_id)
     end
 
     desc "undo_user ACCOUNT_ID, USERNAME, AWS_ACCESS_KEY_ID", "Rollback/Delete the user created with setup_account so you can start again"

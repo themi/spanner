@@ -5,7 +5,7 @@ module AwsUtils
       initialize_client(Aws::IAM::Client, options)
     end
 
-    def add_opscare_user(iam_user_name, account_name)
+    def add_onbording_ic(iam_user_name, account_name)
       @response = @client.create_user({ user_name: iam_user_name })
       puts @response.to_h
 
