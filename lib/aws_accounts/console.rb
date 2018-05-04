@@ -21,8 +21,8 @@ module AwsAccounts
       orgs.list_all
     end
 
-    desc "setup_onbording_user ACCOUNT_ID", "Initialize the new billing AWS Account"
-    def setup_onbording_user(account_id)
+    desc "setup_user ACCOUNT_ID", "Create IAM User in the new account (for use by the Onboarding I/C)"
+    def setup_user(account_id)
       sts = AwsUtils::Sts.new(profile: AwsAccounts.config.account_admin_profile)
 
       role_creds = sts.credentials_for(account_id, AwsAccounts.config.account_access_role, AwsAccounts.config.sts_external_id)

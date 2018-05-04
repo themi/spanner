@@ -12,13 +12,13 @@ module AwsUtils
       user = @client.wait_until(:user_exists, user_name: iam_user_name)
 
       @response = client.create_access_key({ user_name: iam_user_name })
-      puts @response.to_h
+      put_response @response
+      puts ""
 
       key_pair = @response.access_key
-      puts ""
-      puts "[#{account_name}-init]"
-      puts "aws_access_key_id=#{key_pair.access_key_id}"
-      puts "aws_secret_access_key=#{key_pair.secret_access_key}"
+      put_data "[#{account_name}-init]"
+      put_data "aws_access_key_id=#{key_pair.access_key_id}"
+      put_data "aws_secret_access_key=#{key_pair.secret_access_key}"
       puts ""
 
       @response = client.attach_user_policy({

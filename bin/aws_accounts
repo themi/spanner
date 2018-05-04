@@ -5,11 +5,8 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + "/../lib")
 
 require "dotenv/load"
 require "bundler/setup"
-
-require "aws-sdk"
 require "thor"
 
 require "aws_accounts"
-
 AwsAccounts::Console.start(ARGV)
 
