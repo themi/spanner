@@ -12,13 +12,13 @@ module AwsAccounts
       account_email = set_email_address(account_name) if account_email.nil?
 
       orgs = AwsUtils::Organisations.new(profile: AwsAccounts.config.account_admin_profile)
-      orgs.create(account_name, account_email)
+      orgs.create_account(account_name, account_email)
     end
 
     desc "list_all", "List all the billing AWS Accounts within current organisation root account"
     def list_all
       orgs = AwsUtils::Organisations.new(profile: AwsAccounts.config.account_admin_profile)
-      orgs.list_all
+      orgs.list_accounts
     end
 
     desc "setup_user ACCOUNT_ID", "Create IAM User in the new account (for use by the Onboarding I/C)"
@@ -28,7 +28,7 @@ module AwsAccounts
       role_creds = sts.credentials_for(account_id, AwsAccounts.config.account_access_role, AwsAccounts.config.sts_external_id)
       iam = AwsUtils::Iam.new(credentials: role_creds)
 
-      output = iam.add_onbording_ic(AwsAccounts.config.onboarding_ic, account_id)
+      output = iam.create_user(AwsAccounts.config.onboarding_ic, account_id)
     end
 
     desc "undo_user ACCOUNT_ID, USERNAME, AWS_ACCESS_KEY_ID", "Rollback/Delete the user created with setup_onbording_user so you can start again"
