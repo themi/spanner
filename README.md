@@ -95,7 +95,7 @@ Take note of the ACCOUNT_ID then...
 
 
 ```
-aws_accounts setup_onbording_user ACCOUNT_ID
+aws_accounts setup_user ACCOUNT_ID
 ```
 
 topsekr.it the output to Onboarding I/C 
