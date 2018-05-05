@@ -1,5 +1,5 @@
-require "aws_accounts/console"
+require "extentions"
+require "aws_utils"
 require "aws_accounts/config"
 require "initializers/aws_accounts"
-require "aws_utils"
-require "extentions"
+require "aws_accounts/console"

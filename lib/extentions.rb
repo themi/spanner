@@ -30,8 +30,12 @@ String.class_eval do
   include Extentions::Colourize
 end
 
-def puts_response(response)
-  puts response.to_h.to_s.brown
+def puts_aws_results(response)
+  puts response.to_h.inspect.brown
+end
+
+def puts_results(response)
+  puts response.inspect.brown
 end
 
 def puts_info(info)
@@ -40,4 +44,8 @@ end
 
 def puts_data(data)
   puts data.to_s.blue.bold
+end
+
+def puts_alert(alert)
+  puts alert.to_s.red.bold
 end

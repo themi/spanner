@@ -11,7 +11,7 @@ module AwsUtils
         account_name: account_name, 
         iam_user_access_to_billing: "ALLOW" # (still need to: create login and assign appropriate policy)
       })
-      puts_response response
+      puts_aws_results response
       puts ""
 
       new_id = response.create_account_status.id
@@ -23,7 +23,7 @@ module AwsUtils
       @response = client.describe_create_account_status({
         create_account_request_id: new_id, 
       })
-      puts_response response.create_account_status
+      puts_aws_results response.create_account_status
       puts ""
     end
 
