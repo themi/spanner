@@ -8,13 +8,15 @@ module AwsUtils
     end
 
     def create_workbench(asg_name)
-      init_asg_name(asg_name)
+    end
+
+    def describe_asg(full_name)
+      set_asg_name full_name
       current_austoscaling_group
-      # create_instance
     end
 
     private
-      def init_asg_name(asg_name)
+      def set_asg_name(asg_name)
         if @current_asg_name != asg_name
           @current_austoscaling_group = nil 
           @current_launch_config = nil
@@ -31,8 +33,7 @@ module AwsUtils
       end
 
       def current_austoscaling_group
-        # @current_austoscaling_group ||= client.describe_auto_scaling_groups({ auto_scaling_group_names: [current_asg_name] }).auto_scaling_groups.first
-        @current_austoscaling_group ||= client.describe_auto_scaling_groups()
+        @current_austoscaling_group ||= client.describe_auto_scaling_groups({ auto_scaling_group_names: [current_asg_name] }).auto_scaling_groups.first
       end
 
       def create_instance

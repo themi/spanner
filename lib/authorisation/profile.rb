@@ -2,14 +2,15 @@ require 'inifile'
 
 module Authorisation
   class Profile
-    attr_accessor :profile_name, :region
+    attr_accessor :profile_name, :region, :key, :secret, :session_token, :session_time
 
     def initialize(profile_name, **vars)
       @profile_name = profile_name
-      @region         = vars[:region] || 'ap-southeast-2'
+      @region         = vars[:region] 
       @key            = vars[:aws_access_key_id]
       @secret         = vars[:aws_secret_access_key]
       @session_token  = vars[:aws_session_token]
+      @session_time   = vars[:session_time]
     end
 
     # instance methods
@@ -23,10 +24,20 @@ module Authorisation
           { profile: profile_name }
         end
       else
-        { credentials: remote_credentials(profile_name) }
+        { credentials: remote_credentials }
       end
       creds[:region] = region unless region.nil?
       creds
+    end
+
+    def to_hash
+      {
+        region: @region,
+        aws_access_key_id: @key, 
+        aws_secret_access_key: @secret, 
+        aws_session_token: @session_token, 
+        session_time: @session_time 
+      }
     end
 
     def is_local?
@@ -42,7 +53,7 @@ module Authorisation
     # ------------------------
 
     def remote_credentials
-      create_session if !@session_token
+      create_session if no_session?
       Aws::Credentials.new(@key, @secret, @session_token)
     end
 
@@ -56,9 +67,17 @@ module Authorisation
       @key            = sessions['access_key_id']
       @secret         = sessions['secret_access_key']
       @session_token  = sessions['session_token']
+      @session_time   = Time.now.to_s
+      Authorisation.cache(self)
     end
 
-    private :search, :remote_credentials, :create_session
+    def no_session?
+      return true if @session_token.nil? || @session_token.empty?
+      return true if (Time.parse(@session_time) + 3599) < Time.now
+      false
+    end
+
+    private :search, :remote_credentials, :create_session, :no_session?
 
     class << self
       def all

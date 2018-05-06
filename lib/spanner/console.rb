@@ -11,6 +11,15 @@ module Spanner
       Authorisation::Profile.display_profiles
     end
 
+    desc "describe PROFILE [--environment=ENVIRONMENT]", "Describe the stack's resources"
+    method_option :environment, aliases: "-e", banner: "ENVIRONMENT", desc: "Stack environment eg. staging, production etc"
+    method_option :region, banner: "REGION", aliases: "-R", desc: "AWS Region eg. us-east-1, etc"
+    def describe(profile)
+      environment = check_for_default(:environment)
+      region = check_for_default(:region)
+      Resources.describe_stack(profile, environment, region)
+    end
+
     desc "workbench PROFILE [--environment=ENVIRONMENT] [--role=ROLE] [--size=SIZE] [--type=TYPE] [--clone|--no-clone]", "Create an EC2 resource from a pre-baked AMI for a specific ASG"
     method_option :environment, aliases: "-e", banner: "ENVIRONMENT", desc: "Stack environment eg. staging, production etc"
     method_option :role, banner: "ROLE", aliases: "-r", desc: "ASG role eg. web, worker, etc"
