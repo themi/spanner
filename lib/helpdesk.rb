@@ -1,0 +1,5 @@
+require "extentions"
+require "helpdesk/config"
+require "initializers/helpdesk"
+require "helpdesk/console"
+require "helpdesk/client"
