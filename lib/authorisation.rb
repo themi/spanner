@@ -51,4 +51,4 @@ module Authorisation
   end
 end
 
-Authorisation.cache_path = File.join(File.expand_path(File.dirname(__FILE__) + "/.."), "cache")
+Authorisation.cache_path = File.join(File.expand_path("~/.cache"), "spanner")

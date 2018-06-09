@@ -6,6 +6,15 @@ module Spanner
       super
     end
 
+    def self.source_root
+      File.dirname(__FILE__)
+    end
+
+    # def create_launchdaemon
+    #   template_filename = "templates/net.reinteractive.slanner-cleaner.plist"
+    #   gsub_file File.Join(destination_path, template_file), "", "\1"
+    # end
+
     desc "profiles", "List all AWS profiles"
     def profiles
       Authorisation::Profile.display_profiles

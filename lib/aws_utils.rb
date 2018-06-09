@@ -53,4 +53,5 @@ module AwsUtils
   end
 end
 
-AwsUtils.cache_path = File.join(File.expand_path(File.dirname(__FILE__) + "/.."), "cache")
+AwsUtils.cache_path = File.join(File.expand_path("~/.cache"), "spanner")
+
