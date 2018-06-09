@@ -38,8 +38,8 @@ module Spanner
     method_option :clone, default: true, type: :boolean, desc: "Clone workbench from the ASG's AMI"
     def workbench(profile)
       Resources.create_workbench_from_asg(
-        profile, 
-        check_for_default(:environment), check_for_default(:role), check_for_default(:region), 
+        profile,
+        check_for_default(:environment), check_for_default(:role), check_for_default(:region),
         options[:type], options[:size], options[:clone]
       )
     end

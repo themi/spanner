@@ -5,12 +5,12 @@
     <key>Label</key>
     <string>net.reinteractive.spanner-cleaner</string>
     <key>Program</key>
-    <string>{{ home_folder }}/.spanner/cleaner.sh</string>
+    <string>{{ home_folder }}/.cache/spanner/cleaner.sh</string>
     <key>KeepAlive</key>
     <dict>
       <key>PathState</key>
       <dict>
-        <key>{{ home_folder }}/.spanner/cache/authorisations</key>
+        <key>{{ home_folder }}/.cache/spanner/authorisations</key>
         <true/>
       </dict>
     </dict>
