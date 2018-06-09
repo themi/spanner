@@ -57,7 +57,7 @@ module Helpdesk
     # -----
 
       def open_ticket_search_string_for(id)
-        URI.encode "type:ticket status:open organization:#{id}"
+        URI.encode "type:ticket status:open status:pending organization:#{id}"
       end
   end
 end

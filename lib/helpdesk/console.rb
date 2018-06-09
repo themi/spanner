@@ -59,6 +59,7 @@ module Helpdesk
         orgs.results.each do |ticket|
           puts_data ticket.subject
           puts_info "  ID: #{ticket.id}"
+          puts_info "  status: #{ticket.status}"
           puts_info "  Requestor: #{ticket.requester_id}"
           puts_info "  Assignee: #{ticket.assignee_id}"
         end
@@ -72,6 +73,8 @@ module Helpdesk
         filespec = File.join(Helpdesk.config.cache_folder, json_file)
         if File.exist?(filespec) && !file_expired?(filespec)
           File.read(filespec)
+        else
+          nil
         end
       end
 
