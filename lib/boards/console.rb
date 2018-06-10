@@ -19,6 +19,15 @@ module Boards
       puts member.username, board.id
     end
 
+    desc "stats [--fetch | --no-fetch]", "fetch and display a summary of the onboarding stats"
+    method_option :fetch, default: true, type: :boolean, desc: "default true, display prev fetch when false"
+    def stats
+      stats = Boards::Stats.new
+      stats.fetch if options[:fetch]
+      stats.display
+    end
+
+
     private
 
       def set_member_object(requested_member_name=nil)

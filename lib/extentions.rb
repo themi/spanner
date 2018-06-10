@@ -38,6 +38,10 @@ def puts_results(response)
   puts response.inspect.brown
 end
 
+def puts_str_results(response)
+  puts response.to_s.brown
+end
+
 def puts_info(info)
   puts info.to_s.cyan
 end
