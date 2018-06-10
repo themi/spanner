@@ -69,7 +69,12 @@ module Helpdesk
         (File.mtime(filename) + Helpdesk.config.cache_expire_time) > Time.now
       end
 
+      def check_cache_path
+        FileUtils.mkdir_p(Helpdesk.config.cache_folder)
+      end
+
       def read_cached(json_file)
+        check_cache_path
         filespec = File.join(Helpdesk.config.cache_folder, json_file)
         if File.exist?(filespec) && !file_expired?(filespec)
           File.read(filespec)
@@ -79,6 +84,7 @@ module Helpdesk
       end
 
       def save_cached(json_file, json_data)
+        check_cache_path
         filespec = File.join(Helpdesk.config.cache_folder, json_file)
         File.open(filespec, 'w+') { |file| file.write(json_data) }
       end
