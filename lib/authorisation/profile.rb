@@ -6,7 +6,7 @@ module Authorisation
 
     def initialize(profile_name, **vars)
       @profile_name = profile_name
-      @region         = vars[:region] 
+      @region         = vars[:region]
       @key            = vars[:aws_access_key_id]
       @secret         = vars[:aws_secret_access_key]
       @session_token  = vars[:aws_session_token]
@@ -33,10 +33,10 @@ module Authorisation
     def to_hash
       {
         region: @region,
-        aws_access_key_id: @key, 
-        aws_secret_access_key: @secret, 
-        aws_session_token: @session_token, 
-        session_time: @session_time 
+        aws_access_key_id: @key,
+        aws_secret_access_key: @secret,
+        aws_session_token: @session_token,
+        session_time: @session_time
       }
     end
 

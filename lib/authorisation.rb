@@ -37,9 +37,7 @@ module Authorisation
       end
 
       def save_data(data, file_path)
-        unless File.directory?(File.dirname(file_path))
-          FileUtils.mkdir_p(File.dirname(file_path))
-        end
+        FileUtils.mkdir_p(File.dirname(file_path))
         File.open(file_path, 'w+') { |file| file.write(data.to_yaml) }
       end
 
@@ -51,4 +49,4 @@ module Authorisation
   end
 end
 
-Authorisation.cache_path = File.join(File.expand_path("~/.cache"), "spanner")
+Authorisation.cache_path = File.expand_path("cache")

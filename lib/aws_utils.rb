@@ -39,9 +39,7 @@ module AwsUtils
       end
 
       def save_data(data_hash, file_path)
-        unless File.directory?(File.dirname(file_path))
-          FileUtils.mkdir_p(File.dirname(file_path))
-        end
+        FileUtils.mkdir_p(File.dirname(file_path))
         File.open(file_path, 'w+') { |file| file.write(data_hash.to_yaml) }
       end
 
@@ -53,5 +51,5 @@ module AwsUtils
   end
 end
 
-AwsUtils.cache_path = File.join(File.expand_path("~/.cache"), "spanner")
+AwsUtils.cache_path = File.expand_path("cache")
 
