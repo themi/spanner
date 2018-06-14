@@ -1,6 +1,45 @@
-# Billing root (Organisations) AWS Account
 
-## Setup 
+## Boards
+
+### Setup
+
+* install the ruby app `spanner`
+
+```
+git clone git@github.com:themi/spanner.git
+cd spanner
+
+# configure ruby manager for 2.5.1@spanner
+
+gem install bundler
+bundle
+```
+
+### Review config
+
+```
+TRELLO_MEMBER_NAME
+TRELLO_DEVELOPER_PUBLIC_KEY
+TRELLO_MEMBER_TOKEN
+TRELLO_OATH_SECRET  (currently not required)
+```
+
+
+### How to use
+
+* Display onboarding statistics
+
+```
+./bin/baords stats
+```
+
+displays all client apps onboarded or otherwise then summerizes there current status
+
+
+
+## AWS Organisations
+
+### Onetime Setup
 
 * Create User (programmatic access access only) `organisations-admin-user`, attach the AWS Managed Policy `AdministratorAccess` and take note of the aws_access_key_id and aws_secret_access_key.
 
@@ -60,10 +99,10 @@ gem install bundler
 bundle
 ```
 
-* review/update the settings in file `./initializers/aws_accounts.rb`
+* review/update the settings in file `./initializers/aws_organisations.rb`
 
 ```
-AwsAccounts.configure do |c|
+AwsOrganisations.configure do |c|
   c.admin_profile         = "organisation-admin"
   c.account_admin_profile = "account-admin"
   c.account_access_role   = "OrganizationAccountAccessRole"
@@ -75,9 +114,9 @@ end
 ```
 
 
-## How to use
+### How to use
 
-There is only one feature currently: `./bin/aws_accounts`.  It uses `thor` so just run it to get some help. 
+This utility: `./bin/aws_organisations`  uses `thor` so just run it by itself to get some help.
 
 
 #### To create a new AWS Account as a member
@@ -85,20 +124,20 @@ There is only one feature currently: `./bin/aws_accounts`.  It uses `thor` so ju
 * create the account
 
 ```
-aws_accounts create "First National Bank"
+aws_organisations create "First National Bank"
 ```
 
-Take note of the ACCOUNT_ID then...
+Take note of the resulting ACCOUNT_ID then...
 
 
 * initialise the account with opscare user
 
 
 ```
-aws_accounts setup_user ACCOUNT_ID
+aws_organisations setup_user ACCOUNT_ID
 ```
 
-topsekr.it the output to Onboarding I/C 
+topsekr.it the output to Onboarding I/C
 
 
 * Finally reset the root password of the new account (optional).

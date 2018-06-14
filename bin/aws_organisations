@@ -7,6 +7,6 @@ require "dotenv/load"
 require "bundler/setup"
 require "thor"
 
-require "aws_accounts"
-AwsAccounts::Console.start(ARGV)
+require "aws_organisations"
+AwsOrganisations::Console.start(ARGV)
 

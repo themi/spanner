@@ -1,10 +1,10 @@
 require 'ostruct'
- 
-module AwsAccounts
- 
+
+module AwsOrganisations
+
   class Config < OpenStruct
   end
- 
+
   class << self
     def config
       @config ||= Config.new
@@ -14,5 +14,5 @@ module AwsAccounts
       yield config
     end
   end
- 
+
 end
